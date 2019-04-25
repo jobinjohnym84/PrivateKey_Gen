@@ -19,3 +19,26 @@ ciphertext: Your Ethereum private key encrypted using the “cipher” algorithm
 kdf: A Key Derivation Function used to let you encrypt your keystore file with a password;
 kdfparams: The parameters required for the “kdf” algorithm above;
 mac: A code used to verify your password;
+
+# Sign a transaction
+
+If you already created a private key, using web3’s privateKeyToAccount will give the same results as web3.eth.accounts.create. Furthermore, you can use signTransaction to sign a transaction with your private key. You must use signTransaction if you do not want to reveal your private key to the Ethereum node. 
+
+```
+
+const Web3 = require("web3");
+const web3 = new Web3(new Web3.providers.HttpProvider(“http://ethereumNodeUrl”));
+const toAddress = "0x75A426f8136891afe4244347CE6931f5826E5Cc7";
+const privateKey = "0x5f83be83fdd3c38bdc3f383896260604f42053fd4d6591af0cf946b841bbb4b1";
+web3.eth.accounts.signTransaction({
+    to: toAddress,
+    value: "100000000",
+    gas: 21000
+}, privateKey, function (err, result) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(`rawTransaction ${result.rawTransaction}`);
+    web3.eth.sendSignedTransaction(result.rawTransaction).on('receipt', console.log);
+});
