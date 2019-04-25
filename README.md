@@ -13,12 +13,12 @@ To let you send some Ether, most Ethereum clients will ask you to type your pass
 
 # Main items of a keystore file
 
-cipher: The name of a symmetric AES algorithm;
-cipherparams: The parameters required for the “cipher” algorithm above;
-ciphertext: Your Ethereum private key encrypted using the “cipher” algorithm above;
-kdf: A Key Derivation Function used to let you encrypt your keystore file with a password;
-kdfparams: The parameters required for the “kdf” algorithm above;
-mac: A code used to verify your password;
+cipher: The name of a symmetric AES algorithm  
+cipherparams: The parameters required for the “cipher” algorithm above  
+ciphertext: Your Ethereum private key encrypted using the “cipher” algorithm above  
+kdf: A Key Derivation Function used to let you encrypt your keystore file with a password  
+kdfparams: The parameters required for the “kdf” algorithm above  
+mac: A code used to verify your password  
 
 # Sign a transaction
 
